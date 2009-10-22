@@ -20,9 +20,9 @@ development:
   reconnect: false
   database: beu_development
   pool: 5
-  username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
+  username: beu
+  password: 123erg_beu
+  host: grijs
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -33,9 +33,9 @@ test:
   reconnect: false
   database: beu_test
   pool: 5
-  username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
+  username: beu
+  password: 123erg_beu
+  host: grijs
 
 production:
   adapter: mysql
@@ -43,6 +43,6 @@ production:
   reconnect: false
   database: beu_production
   pool: 5
-  username: root
-  password: 
-  socket: /var/run/mysqld/mysqld.sock
+  username: beu
+  password: 123erg_beu
+  host: grijs

@@ -3,3 +3,5 @@
 
 en:
   hello: "Hello world"
+  beu: "{{who}} is totaly fed up with {{what}}"
+  submit: "OK..."

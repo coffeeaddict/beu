@@ -1,0 +1,16 @@
+<% if @current_user %>
+  <% form_remote_for( Beu.new,
+                      :url => { :action => 'create', :controller => 'bue' } 
+                     ) do |f| %>
+    <%= t( :beu,
+           :who => @current_user.name,
+           :what => f.text_field(:content, :size => 20)) %>
+    <br />
+    <%= f.submit(t(:submit)) %>
+  <% end %>
+<% end %>
+
+<% @beu.each do |b| %>
+  <%= t(:beu, :who => b.user.name, :what => b.content) %><br />
+<% end %>
+  
