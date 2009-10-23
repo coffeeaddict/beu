@@ -31,13 +31,12 @@ class ApplicationController < ActionController::Base
   end
 
   def has_valid_login?
-    if session[:user].nil? or !session[:user].kind_of?(User)
+    if session[:user].nil?
       return false
     end
 
     # refresh the item on the session
-    @current_user = User.find(session[:user].id);
-    session[:user] = current_user
+    @current_user = User.find(session[:user]);
 
     # set a cookie - it is reasonably save as everything needs to be in order
     cookies[:login] = {

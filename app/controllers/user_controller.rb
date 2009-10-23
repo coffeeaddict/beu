@@ -46,7 +46,7 @@ class UserController < ApplicationController
     end
 
     if !@user.nil?
-      session[:user] = @user
+      session[:user] = @user.id
       return( redirect_to :controller => "home", :action => "index" )
 
     else

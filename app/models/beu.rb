@@ -3,4 +3,6 @@ class Beu < ActiveRecord::Base
 
   # when a user follows a beu, it is a favorite of the user
   acts_as_followable
+
+  validates_presence_of :content
 end
