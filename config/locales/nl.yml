@@ -1,3 +1,16 @@
 nl:
   beu: "{{who}} is {{what}} helemaal beu"
   submit: "Dus..."
+  site_title: "Beu!"
+  login: "inloggen, jah!"
+  name: "naam"
+  username: "gebruikersnaam"
+  password: "wachtwoord"
+  password_confirm: "wachtwoordbevestiging"
+  email: "email"
+  signup: "In signeren"
+  logout: "Wegwezen nou!"
+  my_bues: "Wat was ik ook alweer beu?"
+  follow: "volg"
+  following: "volgende"
+  users: gebruikers

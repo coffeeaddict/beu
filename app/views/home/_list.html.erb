@@ -1,0 +1,7 @@
+<div id="beu_lijstje" name="beu_lijstje">
+ <ul>
+<% @beu.each do |b| %>
+  <li class="beu"><%= t(:beu, :who => link_to(b.user.name, :controller => "user", :action => "beus", :id => b.user.id), :what => b.content) %></li>
+<% end %>
+ </ul>
+</div>

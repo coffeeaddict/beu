@@ -1,2 +1,10 @@
-<h1>User#login</h1>
-<p>Find me in app/views/user/login.html.erb</p>
+<h2><%= t(:login) %></h2>
+
+<% form_for User.new, :url => { :action => "do_login" } do |f| %>
+  username : <%= f.text_field :username %><br />
+  password : <%= f.password_field :password, :value => "" %><br />
+  <br />
+  <%= recaptcha_tags %>
+  <br />
+  <%= f.submit(t(:submit)) %>
+<% end %>

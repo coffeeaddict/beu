@@ -1,0 +1,19 @@
+<h2><%= t(:signup) %></h2>
+
+<% form_for User.new, :url => { :action => "create" } do |f| %>
+  <%= f.label :name, t(:name) %>
+  <%= f.text_field :name %>
+  <%= f.label :username, t(:username) %>
+  <%= f.text_field :username %>
+  <%= f.label :email, t(:email) %>
+  <%= f.text_field :email %>
+  <%= f.label :password, t(:password) %>
+  <%= f.password_field :password %>
+  <%= f.label :password_confirm, t(:password_confirm) %>
+  <%= f.password_field :password_confirm %>
+  <br />
+  Bio:<br />
+  <%= f.text_area :bio, :cols => 30, :rows => 5 %>
+  <br />
+  <%= f.submit t(:submit) %> 
+<% end %>

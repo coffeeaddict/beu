@@ -1,0 +1,58 @@
+* { 
+  font-family: Verdana, Arial, Helvetica, Sans-serif;
+}
+
+body { 
+  font-size: 12px;
+}
+
+label { 
+  display: block;
+}
+
+li.beu {
+  display: block;
+  border-bottom: dotted 1px grey;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+
+  margin-top: 10px;
+  padding-bottom: 40px;
+}
+
+ul { 
+  margin: 0;
+  padding: 0;
+}
+
+div.header {
+  margin: 10px;
+  margin-bottom: 30px;
+}
+
+div.menu { 
+  border: solid black 1px;
+  padding: 10px;
+  margin: 10px;
+  float: right;
+  margin-top: 20px;
+}
+
+#canvas { 
+  margin: 0 auto;
+  width: 998px;
+  min-height: 777px;
+  margin-top: 0px;
+  position: relative;
+  display: block;
+}
+
+div.beu_form { 
+  border: solid grey 1px;
+  background: #eee;
+  margin: 0 auto;
+  width: 600px;
+  padding: 20px;
+  margin-bottom: 40px;
+}

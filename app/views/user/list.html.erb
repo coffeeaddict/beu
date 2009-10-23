@@ -1,0 +1,13 @@
+<h2>All the user</h2>
+
+<% @user.each do |user| %>
+  <%= link_to user.name, :controller => "user", :action => "beus", :id => user.id %>
+
+ |
+<% if @current_user.following?(user) %>
+<%= t(:following) %>
+<% else %>
+<span id="follow"><%= link_to_remote t(:follow), :url => { :action => 'follow', :id => user.id }, :update => "follow" %></span>
+<% end %>
+<br />
+<% end %>

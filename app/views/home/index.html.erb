@@ -1,16 +1,11 @@
 <% if @current_user %>
-  <% form_remote_for( Beu.new,
-                      :url => { :action => 'create', :controller => 'bue' } 
-                     ) do |f| %>
-    <%= t( :beu,
-           :who => @current_user.name,
-           :what => f.text_field(:content, :size => 20)) %>
-    <br />
-    <%= f.submit(t(:submit)) %>
-  <% end %>
+  <%= render :partial => "form" %>
 <% end %>
 
-<% @beu.each do |b| %>
-  <%= t(:beu, :who => b.user.name, :what => b.content) %><br />
-<% end %>
+<h2>Wat zijn we allemaal beu?</h2>
+<%= render :partial => "list" %>
+
+<br><small># checks for updates every 15 seconds</small>
+<%= periodically_call_remote(:url => { :action => "list" }, :frequency => '15', :update => 'beu_lijstje', :loaded => visual_effect(:highlight, "beu_lijstje", :duration => 0.2)
+) %>
   

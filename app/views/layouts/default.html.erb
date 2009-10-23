@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title><%= t(:site_title) %></title>
+  <%= javascript_include_tag :defaults %> 
+  <%= stylesheet_link_tag "style" %>
+</head>
+<body>
+
+<div id="canvas">
+<div class="header">
+  <div class="menu">
+<%= link_to "home", :controller => "home", :action => "index" %>
+|
+<% if @current_user %>
+  <%= link_to t(:my_bues), :controller => "user", :action => "beus", :id => @current_user.id %>
+  | <%= link_to t(:logout), :controller => "user", :action => "logout" %>
+  |
+<% else %>
+  <%= link_to t(:signup), :controller => "user", :action => "signup" %>
+  | <%= link_to t(:login), :controller => "user", :action => "login" %>
+  |
+<% end %>
+<%= link_to t(:users), :controller => "user", :action => "list" %>
+</div>
+
+  <div><img src="/beu/images/beu-blog.png" /></div>
+</div>  
+
+  <span style="color: red"><%= flash[:error] %></span>
+  <span style="color: green"><%= flash[:notice] %></span>
+
+
+  <%= yield %>
+
+</div>
+</body>
+</html>
+    
+<%
+  flash[:error] = ""
+  flash[:notice] = ""
+%>

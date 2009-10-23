@@ -1,0 +1,14 @@
+<div class="beu_form">
+  <% form_remote_for( Beu.new,
+                      :url => { :action => 'create', :controller => 'beu' },
+	              :complete => "$('beu_content').value='';"
+                     ) do |f| %>
+    <div style="float: right; margin-right: 50px;">
+      <%= f.submit(t(:submit)) %>
+    </div>
+    <%= t( :beu,
+           :who => @current_user.name,
+           :what => f.text_field(:content, :size => 20)) %>
+
+  <% end %>
+</div>
