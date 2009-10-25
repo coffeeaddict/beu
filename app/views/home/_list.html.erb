@@ -1,7 +1,10 @@
 <div id="beu_lijstje" name="beu_lijstje">
  <ul>
 <% @beu.each do |b| %>
-  <li class="beu"><%= t(:beu, :who => link_to(b.user.name, :controller => "user", :action => "beus", :id => b.user.id), :what => b.content) %></li>
+  <li class="beu">
+    <div style="margin-top: 40px; float: right; font-size: 10px;"><%= I18n.localize(b.created_at, :format => "long") %></div>
+    <%= t(:beu, :who => link_to(b.user.name, :controller => "user", :action => "beus", :id => b.user.id), :what => b.content) %>
+  </li>
 <% end %>
  </ul>
 </div>

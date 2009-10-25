@@ -1,4 +1,7 @@
 class BeuController < ApplicationController
+
+  before_filter :has_valid_login?
+
   def create
     beu = Beu.new(params[:beu])
     beu.user = @current_user

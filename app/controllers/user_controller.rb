@@ -1,5 +1,9 @@
 class UserController < ApplicationController
 
+  before_filter( :has_valid_login?,
+                 :except => [ "login", "do_login", "signup", "beus" ]
+               )
+
   def login
     @user = User.new
 

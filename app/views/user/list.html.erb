@@ -4,7 +4,7 @@
   <%= link_to user.name, :controller => "user", :action => "beus", :id => user.id %>
 
  |
-<% if @current_user.following?(user) %>
+<% if @current_user && @current_user.following?(user) %>
 <%= t(:following) %>
 <% else %>
 <span id="follow"><%= link_to_remote t(:follow), :url => { :action => 'follow', :id => user.id }, :update => "follow" %></span>

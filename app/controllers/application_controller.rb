@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
 
   layout 'default.html.erb'
-  before_filter :has_valid_login?, :set_locale
+  before_filter :get_current_user, :set_locale
 
   def set_locale
     if params[:locale]
@@ -30,13 +30,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def get_current_user
+    if !session[:user].nil?
+      @current_user = User.find(session[:user])
+    end
+  end
+ 
   def has_valid_login?
     if session[:user].nil?
-      return false
+      return redirect_to :controller => "user", :action => "login"
     end
 
     # refresh the item on the session
-    @current_user = User.find(session[:user]);
+    @current_user = User.find(session[:user]) unless @current_user
 
     # set a cookie - it is reasonably save as everything needs to be in order
     cookies[:login] = {

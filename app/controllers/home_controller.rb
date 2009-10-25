@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  
+
   def index
     @beu = get_beus
   end
@@ -10,7 +12,11 @@ class HomeController < ApplicationController
 
   private
   def get_beus
-    if @current_user
+
+    # when there is a current user then show the users following,
+    # unless the user follows no one
+    #
+    if @current_user && @current_user.following_by_type('User').length > 0
       # dup to disassociate the arrray
       beus = @current_user.beus.dup
 
