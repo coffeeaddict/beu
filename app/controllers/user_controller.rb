@@ -82,8 +82,18 @@ class UserController < ApplicationController
   end
 
   def beus
-    @user = User.find(params[:id])
-    @beu = @user.beus
+    id = params[:id]
+    if id.to_i.to_s == id
+      @user = User.find(params[:id])
+    else
+      @user = User.find( :first, :conditions => [ "username=?", id ] )
+    end
+
+    if @user
+      @beu = @user.beus
+    else
+      render :text => "The user n'existe pas", :status => 404
+    end
   end
 
   def favorites

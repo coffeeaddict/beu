@@ -33,6 +33,6 @@ class HomeController < ApplicationController
     
     beus.sort! { |a,b| a.created_at.to_f <=> b.created_at.to_f }
 
-    return beus
+    return beus.reverse
   end
 end

@@ -2,8 +2,10 @@
  <ul>
 <% @beu.each do |b| %>
   <li class="beu">
+    <% formatted = format_beu(b.content) %>
+   
     <div style="margin-top: 40px; float: right; font-size: 10px;"><%= I18n.localize(b.created_at, :format => "long") %></div>
-    <%= t(:beu, :who => link_to(b.user.name, :controller => "user", :action => "beus", :id => b.user.id), :what => b.content) %>
+    <%= t(:beu, :who => link_to(b.user.username, :controller => "user", :action => "beus", :id => b.user.username), :what => formatted) %>
   </li>
 <% end %>
  </ul>
