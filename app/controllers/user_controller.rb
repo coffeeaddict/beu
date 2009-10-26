@@ -1,7 +1,7 @@
 class UserController < ApplicationController
 
   before_filter( :has_valid_login?,
-                 :except => [ "login", "do_login", "signup", "beus" ]
+                 :except => [ "login", "do_login", "signup", "beus", "create" ]
                )
 
   def login
@@ -110,14 +110,15 @@ class UserController < ApplicationController
   end
 
   def signup
+    @user = User.new
   end
 
   def create
-    user = User.new(params[:user])
+    @user = User.new(params[:user])
 
-    if ( user.save )
-      @current_user = user
-      session[:user] = user
+    if ( @user.save )
+      @current_user = @user
+      session[:user] = @user
       return( redirect_to :controller => "home", :action => "index" )
     end
 

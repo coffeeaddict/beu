@@ -15,4 +15,5 @@ ENV['RECAPTCHA_PRIVATE_KEY'] = '6Leb4QgAAAAAAMvxOD0JOSZLMAntGlOWf4dCtuBr'
 Rails::Initializer.run do |config|
   config.time_zone = 'UTC'
   config.i18n.default_locale = :nl
+  config.cache_store = :mem_cache_store, { :namespace => 'storeapp' }
 end

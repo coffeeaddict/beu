@@ -5,7 +5,8 @@
 <h2>Wat zijn we allemaal beu?</h2>
 <%= render :partial => "list" %>
 
-<br><small># checks for updates every 15 seconds</small>
-<%= periodically_call_remote(:url => { :action => "list" }, :frequency => '15', :update => 'beu_lijstje', :loaded => visual_effect(:highlight, "beu_lijstje", :duration => 0.2)
+<% interval = 60 %>
+<br><small># checks for updates every <%= interval %> seconds</small>
+<%= periodically_call_remote(:url => { :action => "list" }, :frequency => interval, :update => 'beu_lijstje', :loaded => visual_effect(:highlight, "beu_lijstje", :duration => 0.2)
 ) %>
   

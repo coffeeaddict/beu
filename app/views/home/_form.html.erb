@@ -7,7 +7,7 @@
       <%= f.submit(t(:submit)) %>
     </div>
     <%= t( :beu,
-           :who => @current_user.name,
+           :who => @current_user.username,
            :what => f.text_field(:content, :size => 20)) %>
 
   <% end %>

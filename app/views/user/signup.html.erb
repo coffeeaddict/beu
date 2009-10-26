@@ -1,6 +1,13 @@
 <h2><%= t(:signup) %></h2>
 
-<% form_for User.new, :url => { :action => "create" } do |f| %>
+<% if @user && @user.errors %>
+  <div style="color: red;">
+  <%= error_messages_for('user') %>
+  </div>
+  <br /><br />
+<% end %>
+
+<% form_for @user, :url => { :action => "create" } do |f| %>
   <%= f.label :name, t(:name) %>
   <%= f.text_field :name %>
   <%= f.label :username, t(:username) %>

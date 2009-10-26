@@ -11,6 +11,12 @@ class User < ActiveRecord::Base
 
   # validations
   validates_presence_of :username, :password, :name, :email
+  validates_length_of :password, :minimum => 6
+
+  validate { |user|
+    user.errors.add_to_base("Usernames can only contain 'word characters'") if user.username =~ /\W+/
+    user.errors.add_to_base("Usernames may not contain spaces") if user.username =~ /\s+/
+  }
 
   # password protection
   before_create :hash_password
