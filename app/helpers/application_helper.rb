@@ -7,7 +7,7 @@ module ApplicationHelper
       if tag =~ /\#/
 	tag = link_to tag, :controller => "beu", :action => "search", :id => tag.gsub(/\#/,"")
       elsif tag =~ /\@/
-	tag = link_to tag, :controller => "user", :action => "bues", :id => tag.gsub(/\@/,"")
+	tag = link_to tag, :controller => "user", :action => "beus", :id => tag.gsub(/\@/,"")
       else
 	# que?
       end

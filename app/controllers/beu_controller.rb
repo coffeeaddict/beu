@@ -1,6 +1,6 @@
 class BeuController < ApplicationController
 
-  before_filter :has_valid_login?
+  before_filter :has_valid_login?, :except => [ "search" ]
 
   def create
     beu = Beu.new(params[:beu])
@@ -16,4 +16,11 @@ class BeuController < ApplicationController
     end
   end
 
+  def search
+    @beu = Beu.find( :all,
+                     :conditions => [ "content like ?", "%"+params[:id]+"%" ],
+		     :limit      => 50
+		   )
+  end
+		     
 end
