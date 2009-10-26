@@ -1,11 +1,37 @@
-This is rant-ware.
+LICENSE
 
-You can use this to rant in a twitter like fashion.
-
-Note that this is very much alpha and lots needs to be done.
-
-              ___
-Had it up to   ^-- here with that.
+  This is rant-ware. If you like it, please write a seriously funny
+  rant about it on your blog.
 
 
-Blergh.
+WHAT IS IT
+
+  You can use this to rant in a twitter like fashion.
+
+  Note that this is very much alpha and lots needs to be done.
+  (               ___
+    Had it up to   ^-- here with that.
+  )
+
+
+WHAT CAN I DO WITH IT
+
+  Absolutely nothing but satisfy your need to scream, shout and run
+  in circles. (Which is pretty awesome)
+
+
+DESCRIBE IT IN ONE WORD
+
+  Blergh.
+
+
+CREDITS
+
+  You should really be giving love to this:
+
+     http://github.com/tcocca/acts_as_follower
+
+  and:
+
+     http://github.com/ambethia/recaptcha/
+     ( it helps digitizing books & news papers, u know)
