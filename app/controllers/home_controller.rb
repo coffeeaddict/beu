@@ -12,11 +12,14 @@ class HomeController < ApplicationController
 
   private
   def get_beus
+    beus = Beu.find(:all, :limit => 50, :order => 'created_at DESC' )
+  end
 
+  def get_beud_deprecated
     # when there is a current user then show the users following,
     # unless the user follows no one
     #
-    if @current_user && @current_user.following_by_type('User').length > 0
+    if @current_user   # && @current_user.following_by_type('User').length > 0 
       # dup to disassociate the arrray
       beus = @current_user.beus.dup
 
@@ -27,12 +30,9 @@ class HomeController < ApplicationController
       end
 
     else
-      beus = Beu.find(:all, :limit => 50)
 
     end
     
-    beus.sort! { |a,b| a.created_at.to_f <=> b.created_at.to_f }
-
-    return beus.reverse
+    beus.sort! { |a,b| b.created_at.to_f <=> a.created_at.to_f }
   end
 end

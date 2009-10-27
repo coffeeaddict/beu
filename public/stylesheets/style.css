@@ -18,7 +18,7 @@ h1, h2, h3, h4, h5, h6 {
   color: red;
   background: yellow;
   opacity: .8;
-  padding: 15px 5px;
+  padding: 15px 10px;
 }
 
 a { 
@@ -37,6 +37,7 @@ li.beu {
   padding: 0;
 
   margin-top: 10px;
+  margin-left: 10px;
   padding-bottom: 40px;
 }
 
@@ -69,15 +70,20 @@ div.menu {
 }
 
 div.beu_form { 
-  border: solid grey 1px;
+  border: solid yellow 2px;
   background: #c00;
   margin: 0 auto;
-  width: 600px;
+  width: 800px;
   padding: 20px;
   margin-bottom: 40px;
   opacity: .7;
   color: yellow;
   font-weight: bold;
+  font-size: 18px;
+}
+
+div.beu_form input {
+  font-size: 18px;
 }
 
 #beu_lijstje { 
@@ -101,3 +107,25 @@ input {
   background: yellow;
   color: red;
 }
+
+.notice, .error { 
+  background: white;
+  color: red;
+  display: block;
+  font-size: 14px;
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.notice { 
+  color: green;
+}
+
+.date_box { 
+  float: right;
+  font-size: 10px;
+  text-align: right;
+}
+
+

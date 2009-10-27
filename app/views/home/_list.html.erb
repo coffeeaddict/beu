@@ -1,10 +1,21 @@
  <ul>
 <% @beu.each do |b| %>
-  <li class="beu">
+  <li class="beu" id="beu_<%= b.id %>">
     <% formatted = format_beu(b.content) %>
    
-    <div style="margin-top: 40px; float: right; font-size: 10px;"><%= I18n.localize(b.created_at, :format => "long") %></div>
+    <div class="date_box">
+      <% if b.user == @current_user %>
+        <%= link_to_remote image_tag('trashcan.gif', :alt => "Anihalate!", :border => 0), :url => { :controller => "beu", :action => "destroy", :id => b.id }, :update => "beu_#{b.id}" %><br />
+      <% else %>
+	<br /><br /><br />
+      <% end %>
+      <%= I18n.localize(b.created_at, :format => "long") %>
+    </div>
     <%= t(:beu, :who => link_to(b.user.username, :controller => "user", :action => "beus", :id => b.user.username), :what => formatted) %>
   </li>
 <% end %>
- </ul>
+</ul>
+
+<% if @beu.length == 0 %>
+  Mischien moet je wat <%= link_to 'mensen', :controller => "user", :action => "list" %> gaan volgen...
+<% end %>

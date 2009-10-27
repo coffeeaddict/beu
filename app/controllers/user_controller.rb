@@ -81,6 +81,7 @@ class UserController < ApplicationController
 
   # cough up a list of users
   def list
+    flash[:notice] = "Het volg-systeem is neergestort als een mir. Iedereen volgt gewoon iedereen. Wel zo communistisch en makkelijk";
     @user = User.find(:all)
   end
 

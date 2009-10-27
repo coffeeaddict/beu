@@ -9,7 +9,10 @@ class BeuController < ApplicationController
     if ( beu.save )
 
       render (:update) { |page|
-	page.insert_html(:top, 'beu_lijstje', '<li class="beu">' + t(:beu, :who => @current_user.name, :what => beu.content) + "</li>")
+	page.insert_html(:top, 'beu_lijstje',
+			 '<li class="beu">' + t(:beu,
+						:who => link_to(@current_user.username, :controller => "user", :action => "beus"),
+						:what => format_beu(beu.content)) + "</li>")
       }
     else
       render :text => "Ja, wat?!"
@@ -22,5 +25,15 @@ class BeuController < ApplicationController
 		     :limit      => 50
 		   )
   end
-		     
+
+  def destroy
+    beu = Beu.find(params[:id])
+    if beu.user == @current_user
+      beu.destroy
+      render :text => "Gone. Forever."
+    else
+      render :text => "I really dont think so"
+    end
+  end
+
 end

@@ -7,7 +7,7 @@
 <body>
 
 <!-- this is the neato background -->
-<img src="/beu/images/background.jpeg" alt="background image" id="bg" />
+<%= image_tag "background.jpeg", :alt => "Background image", :id => "bg" %>
 
 <a href="http://github.com/coffeeaddict/beu"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 
@@ -20,20 +20,17 @@
   <%= link_to t(:my_bues), :controller => "user", :action => "beus", :id => @current_user.id %>
   | <%= link_to t(:logout), :controller => "user", :action => "logout" %>
   | <%= link_to t(:destroy), :controller => "user", :action => "destroy" %>
-  |
 <% else %>
   <%= link_to t(:signup), :controller => "user", :action => "signup" %>
   | <%= link_to t(:login), :controller => "user", :action => "login" %>
-  |
 <% end %>
-<%= link_to t(:users), :controller => "user", :action => "list" %>
 </div>
 
-  <div><img src="/beu/images/beu-blog.png" /></div>
+  <div><%= image_tag "beu-blog.png", :alt => "BEU! Blog" %></div>
 </div>  
 
-  <span style="color: red"><%= flash[:error] %></span>
-  <span style="color: green"><%= flash[:notice] %></span>
+  <% if flash[:error] && !flash[:error].empty? %><span class="error"><%= flash[:error] %></span><% end %>
+  <% if flash[:notice] && !flash[:notice].empty? %><span class="notice"><%= flash[:notice] %></span><% end %>
 
 
   <%= yield %>
