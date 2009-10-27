@@ -22,5 +22,7 @@
   Bio:<br />
   <%= f.text_area :bio, :cols => 30, :rows => 5 %>
   <br />
+  <%= recaptcha_tags %>
+  <br />
   <%= f.submit t(:submit) %> 
 <% end %>

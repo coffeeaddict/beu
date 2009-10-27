@@ -1,0 +1,5 @@
+<%= t(:really, :who => @current_user.username) %>
+
+<%= form_tag :contoller => "user", :action => "destroy" %>
+  <%= submit_tag(t(:yess), :name => "ok") %>
+</form>

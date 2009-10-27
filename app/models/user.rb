@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   # validations
   validates_presence_of :username, :password, :name, :email
   validates_length_of :password, :minimum => 6
+  validates_uniqueness_of :username
 
   validate { |user|
     user.errors.add_to_base("Usernames can only contain 'word characters'") if user.username =~ /\W+/
@@ -25,6 +26,17 @@ class User < ActiveRecord::Base
   def self.make_hashed_password(password)
     return Digest::SHA512.hexdigest(password + PW_SALT)
   end
+
+  # make sure the user leaves no trace
+  before_destroy { |record|
+    # destroy all the users blog entries
+    Beu.destroy_all "user_id = #{record.id}"
+
+    # stop the following
+    record.all_following.each { |that|
+      record.stop_following(that)
+    }
+  }
     
   private
     def hash_password

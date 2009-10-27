@@ -165,22 +165,22 @@ nl:
         other: langer {{count}} jaar
       half_a_minute: halve minuut
 
-# translations
-  beu: "{{who}} is {{what}} helemaal beu"
-  submit: "Dus..."
-  site_title: "Beu!"
-  login: "inloggen, jah!"
-  name: "naam"
-  username: "gebruikersnaam"
-  password: "wachtwoord"
-  password_confirm: "wachtwoordbevestiging"
-  email: "email"
-  signup: "In signeren"
-  logout: "Wegwezen nou!"
-  my_bues: "Wat was ik ook alweer beu?"
-  follow: "volg"
-  following: "volgende"
-  users: gebruikers
-  destroy: "Vernietig Mij"
-  yess: "JAAaaaaahhh!"
-  really: "Ech waar?"
+# Translations
+  Beu: "{{Who}} Is {{What}} Helemaal Beu"
+  Submit: "Dus..."
+  Site_Title: "Beu!"
+  Login: "Inloggen, Jah!"
+  Name: "Naam"
+  Username: "Gebruikersnaam"
+  Password: "Wachtwoord"
+  Password_Confirm: "Wachtwoordbevestiging"
+  Email: "Email"
+  Signup: "In Signeren"
+  Logout: "Wegwezen Nou!"
+  My_Bues: "Wat Was Ik Ook Alweer Beu?"
+  Follow: "Volg"
+  Following: "Volgende"
+  Users: Gebruikers
+  Destroy: "Vernietig Mij"
+  Yess: "Jaaaaaaahhh!"
+  Really: "Ech Waar?"

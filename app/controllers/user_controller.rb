@@ -4,6 +4,7 @@ class UserController < ApplicationController
                  :except => [ "login", "do_login", "signup", "beus", "create" ]
                )
 
+  # in russia, the system logs in to you
   def login
     @user = User.new
 
@@ -13,6 +14,7 @@ class UserController < ApplicationController
     end
   end
 
+  # perform the login. Should be moving this to a plugin
   def do_login
     type = :unknown
 
@@ -77,10 +79,12 @@ class UserController < ApplicationController
     end
   end
 
+  # cough up a list of users
   def list
     @user = User.find(:all)
   end
 
+  # show a list of the users rants
   def beus
     id = params[:id]
     if id.to_i.to_s == id
@@ -96,12 +100,14 @@ class UserController < ApplicationController
     end
   end
 
+  # show a list of the users faves
   def favorites
     @beu = @current_user.following_by_type('Beu')
     @user = @current_user
     render :layout => "beus"
   end
 
+  # she wont play no more...
   def logout
     session[:user] = nil
     cookies.delete(:user)
@@ -109,26 +115,43 @@ class UserController < ApplicationController
     redirect_to :controller => "home", :action => "index"
   end
 
+  # the anonymous lurker wishes to become a new user
   def signup
     @user = User.new
   end
 
+  # make me a new user
   def create
     @user = User.new(params[:user])
 
-    if ( @user.save )
-      @current_user = @user
-      session[:user] = @user
-      return( redirect_to :controller => "home", :action => "index" )
+    if verify_recaptcha 
+      if @user.save 
+	@current_user = @user
+	session[:user] = @user
+	return( redirect_to :controller => "home", :action => "index" )
+      end
+    else
+      flash[:error] = "Are you not human, human?"
     end
 
     render :action => "signup"
   end
 
+  # follow another user like a puppy
   def follow
     who = User.find(params[:id])
     @current_user.follow(who)
     render :text => "you are now following #{who.username}"
   end
-  
+
+  # anihalate the user
+  def destroy
+    if params[:ok]
+      @current_user.destroy
+      session[:user] = nil
+      cookies.delete(:user)
+
+      return redirect_to :controller => "home", :action => "index"
+    end
+  end
 end
