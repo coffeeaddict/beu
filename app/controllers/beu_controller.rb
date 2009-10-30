@@ -23,6 +23,7 @@ class BeuController < ApplicationController
 						:what => format_beu(beu.content)) + "</li>")
       }
     else
+      RAILS_DEFAULT_LOGGER.error beu.errors
       render :text => "Ja, wat?!"
     end
   end
