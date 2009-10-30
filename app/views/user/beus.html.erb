@@ -1,23 +1,12 @@
-<% if @current_user == @user %>
-  <%= render :partial => "home/form" %>
-<% end %>
-
-
-<h2>Over <%= @user.name %></h2>
-<%= @user.username  %> |
-<% if @current_user && @current_user.following?(@user) %>
-You follow <%= @user.username %>
-<% elsif !@current_user %>
-  &nbsp;
-<% else %>
-<span id="follow"><%= link_to_remote t(:follow), :url => { :action => 'follow', :id => @user.id }, :update => "follow" %></span>
-<% end %>
-<br />
-
-<%= @user.bio %><br />
-
-<h2><br /><%= @user.name %> is het beu:</h2>
+<h1>Over <%= @user.name %></h1><br />
 
 <div id="beu_lijstje" name="beu_lijstje">
+
+<strong>Bio</strong><br />
+<pre><%= @user.bio %></pre><br />
+<br />
+<%= link_to "De faves van #{@user.name}", :controller => "user", :action => "favorites", :id => @user.username %>
+
+<h2 style="background: none;"><br /><%= @user.name %> is het beu:</h2>
 <%= render :partial => "home/list" %>
 </div>

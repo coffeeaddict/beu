@@ -105,7 +105,6 @@ class UserController < ApplicationController
   def favorites
     @beu = @current_user.following_by_type('Beu')
     @user = @current_user
-    render :layout => "beus"
   end
 
   # she wont play no more...
