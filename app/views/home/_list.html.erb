@@ -16,7 +16,7 @@
                                    :action     => "fave",
 	                           :id         => b.id },
 
-                         :complete => "$('star_#{b.id}').src = '/beu/images/starf.gif'" %>
+                         :complete => "$('star_#{b.id}').src = '/images/starf.gif'" %>
       <% end %>
       <br />
       <%= link_to image_tag('perma-icon.gif', :border => 0, :title => "Perma link", :alt => "pin"), :controller => "beu", :id => b.id %>

@@ -103,8 +103,17 @@ class UserController < ApplicationController
 
   # show a list of the users faves
   def favorites
-    @beu = @current_user.following_by_type('Beu')
-    @user = @current_user
+    if params[:id]
+      if params[:id].to_i.to_s == params[:id]
+	@user = User.find(params[:id])
+      else
+	@user = User.find(:first, :conditions => ["username=?", params[:id]])
+      end
+    else
+      @user = @current_user
+    end
+
+    @beu = @user.following_by_type('Beu')
   end
 
   # she wont play no more...
