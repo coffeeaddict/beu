@@ -1,0 +1,36 @@
+<div id="beu_lijstje" name="beu_lijstje">
+  <% if @beu %>  
+    <h1 style="background: none">
+      <%= link_to(@beu.user.username, :controller => "user",
+                                      :action => "beus",
+                                      :id => @beu.user.username) %> said:
+    </h1>
+
+    <% if @current_user && @current_user.following?(@beu) %>
+       <h3 style="background: none;">This is one of your favorites</h3>
+    <% end %>
+
+    <li class="beu" id="beu_<%= @beu.id %>">
+      <div class="date_box">
+        <% if @beu.user == @current_user %>
+          <%= link_to_remote image_tag('trashcan.gif', :alt => "Anihalate!",
+                                                       :border => 0),
+                             :url => { :controller => "beu",
+                                       :action => "destroy",
+                                       :id => @beu.id },
+                             :update => "beu_#{@beu.id}" %><br />
+        <% else %>
+	  <br /><br /><br />
+        <% end %>
+        <%= I18n.localize(@beu.created_at, :format => "long") %>
+      </div>
+
+      <%= t(:beu, :who  => @beu.user.username,
+                  :what => format_beu(@beu.content)) %>
+    </li>
+
+  <% else %>
+    <%= render(:partial => "home/nothing") %>
+  <% end %>
+
+</div>
