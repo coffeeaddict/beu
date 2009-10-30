@@ -1,6 +1,14 @@
 class BeuController < ApplicationController
 
-  before_filter :has_valid_login?, :except => [ "search" ]
+  before_filter :has_valid_login?, :except => [ "search", "index" ]
+
+  def index
+    begin
+      @beu = Beu.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      @beu = nil
+    end
+  end
 
   def create
     beu = Beu.new(params[:beu])
@@ -34,6 +42,16 @@ class BeuController < ApplicationController
     else
       render :text => "I really dont think so"
     end
+  end
+
+  def fave
+    beu = Beu.find(params[:id])
+    @current_user.follow(beu)
+
+    render(:update) { |page|
+      page.insert_html(:bottom, 'beu_' + params[:id],
+		       '<small><br />In russia favourites have you</small>')
+    }
   end
 
 end

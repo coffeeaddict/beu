@@ -1,21 +1,50 @@
- <ul>
+<ul>
 <% @beu.each do |b| %>
   <li class="beu" id="beu_<%= b.id %>">
     <% formatted = format_beu(b.content) %>
    
+    <div class="options_box">
+      <% if @current_user && @current_user.following?(b) %>
+	<%= image_tag('starf.gif') %>
+      <% else %>
+      <%= link_to_remote image_tag( 'star.gif',
+                                    :alt => "Favorite!",
+                                    :title => "Favorite",
+                                    :border => 0, :id => "star_#{b.id}" ),
+
+                         :url => { :controller => "beu",
+                                   :action     => "fave",
+	                           :id         => b.id },
+
+                         :complete => "$('star_#{b.id}').src = '/beu/images/starf.gif'" %>
+      <% end %>
+      <br />
+      <%= link_to image_tag('perma-icon.gif', :border => 0, :title => "Perma link", :alt => "pin"), :controller => "beu", :id => b.id %>
+      <br />
+    </div>
+
     <div class="date_box">
       <% if b.user == @current_user %>
-        <%= link_to_remote image_tag('trashcan.gif', :alt => "Anihalate!", :border => 0), :url => { :controller => "beu", :action => "destroy", :id => b.id }, :update => "beu_#{b.id}" %><br />
+        <%= link_to_remote image_tag('trashcan.gif',
+                                     :alt => "Anihalate!",
+                                     :border => 0),
+                           :url => { :controller => "beu",
+                                     :action => "destroy",
+                                     :id => b.id },
+                           :update => "beu_#{b.id}" %><br />
       <% else %>
 	<br /><br /><br />
       <% end %>
       <%= I18n.localize(b.created_at, :format => "long") %>
     </div>
-    <%= t(:beu, :who => link_to(b.user.username, :controller => "user", :action => "beus", :id => b.user.username), :what => formatted) %>
+
+
+    <%= t(:beu, :who => link_to(b.user.username, :controller => "user",
+                                                 :action => "beus",
+                                                 :id => b.user.username),
+                :what => formatted) %>
   </li>
 <% end %>
 </ul>
 
-<% if @beu.length == 0 %>
-  Mischien moet je wat <%= link_to 'mensen', :controller => "user", :action => "list" %> gaan volgen...
-<% end %>
+<%= render(:partial => "home/nothing") if @beu.length == 0  %>

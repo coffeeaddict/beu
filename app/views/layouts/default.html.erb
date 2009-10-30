@@ -29,6 +29,9 @@
   <div><%= image_tag "beu-blog.png", :alt => "BEU! Blog" %></div>
 </div>  
 
+  <% flash[:notice] = "" if flash[:notice].nil? %>
+  <% flash[:notice] << "<br/><br>Dit is de development beu. " << link_to("Hier is de echte", "http://beu.simplic.it/") %>
+
   <% if flash[:error] && !flash[:error].empty? %><span class="error"><%= flash[:error] %></span><% end %>
   <% if flash[:notice] && !flash[:notice].empty? %><span class="notice"><%= flash[:notice] %></span><% end %>
 
