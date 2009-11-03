@@ -16,7 +16,7 @@
                                    :action     => "fave",
 	                           :id         => b.id },
 
-                         :complete => "$('star_#{b.id}').src = '/images/starf.gif'" %>
+                         :complete => "$('star_#{b.id}').src='#{path_to_image('starf.gif')}'" %>
       <% end %>
       <br />
       <%= link_to image_tag('perma-icon.gif', :border => 0, :title => "Perma link", :alt => "pin"), :controller => "beu", :id => b.id %>
@@ -38,6 +38,9 @@
       <%= I18n.localize(b.created_at, :format => "long") %>
     </div>
 
+    <div class="avatar">
+      <%= gravatar_for( b.user, :default => "wavatar" ) %>
+    </div>
 
     <%= t(:beu, :who => link_to(b.user.username, :controller => "user",
                                                  :action => "beus",

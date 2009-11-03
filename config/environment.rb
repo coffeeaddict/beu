@@ -16,4 +16,5 @@ Rails::Initializer.run do |config|
   config.time_zone = 'UTC'
   config.i18n.default_locale = :ru
   config.cache_store = :mem_cache_store, { :namespace => 'storeapp' }
+  config.gem 'datanoise-actionwebservice', :lib => 'actionwebservice'
 end
