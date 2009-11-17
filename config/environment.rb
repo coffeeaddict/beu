@@ -1,4 +1,5 @@
 # Be sure to restart your server when you modify this file
+# ok
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
@@ -17,4 +18,7 @@ Rails::Initializer.run do |config|
   config.i18n.default_locale = :ru
   config.cache_store = :mem_cache_store, { :namespace => 'storeapp' }
   config.gem 'datanoise-actionwebservice', :lib => 'actionwebservice'
+  if RAILS_ENV == 'production'
+	config.log_level = :warn
+  end
 end
